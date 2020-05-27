@@ -1,0 +1,29 @@
+{
+  "name": "quick-read",
+  "version": "1.0.0",
+  "description": "Slack bot to quick read articles",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Agney <agney@outlook.in>",
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.6",
+    "prettier": "2.0.5"
+  },
+  "dependencies": {
+    "@slack/bolt": "^2.1.1",
+    "dotenv": "^8.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
+  }
+}
