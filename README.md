@@ -1,4 +1,7 @@
 <div align="center">
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <header>
     <img src="assets/icon.png" height="80" alt="Icon for Quick Read">
     <h1>Quick Read</h1>
@@ -29,3 +32,15 @@ Raise an [issue](https://github.com/agneym/quick-read-slack) for bugs/queries.
 ## Contributors
 
 This project follows [all contributors](https://allcontributors.org/) specification. All contributions are welcome.
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://blog.agney.dev"><img src="https://avatars0.githubusercontent.com/u/8883368?v=4" width="100px;" alt=""/><br /><sub><b>Agney Menon</b></sub></a><br /><a href="https://github.com/agneym/quick-read-slack/commits?author=agneym" title="Code">💻</a> <a href="#ideas-agneym" title="Ideas, Planning, & Feedback">🤔</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
