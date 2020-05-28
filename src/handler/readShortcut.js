@@ -51,17 +51,45 @@ async function readShortcut({ shortcut, ack, context, client }) {
       return;
     }
 
+    const openResult = await client.views.open({
+      token: context.botToken,
+      trigger_id: shortcut.trigger_id,
+      view: {
+        type: "modal",
+        callback_id: "quick_read_modal",
+        title: {
+          type: "plain_text",
+          text: `Loading ...`,
+        },
+        close: {
+          type: "plain_text",
+          text: "Close",
+        },
+        blocks: [
+          {
+            type: "section",
+            text: {
+              type: "plain_text",
+              text: `Firing up a Browser... 🚀`,
+              emoji: true,
+            },
+          },
+        ],
+      },
+    });
+
     const contents = await parseUrl(url);
 
     if (contents.failed) {
       return;
     }
 
-    const result = await client.views.open({
+    const updateResult = await client.views.update({
       token: context.botToken,
-      trigger_id: shortcut.trigger_id,
+      view_id: openResult.view.id,
       view: {
         type: "modal",
+        callback_id: "quick_read_modal",
         title: {
           type: "plain_text",
           text: formatTitle(contents.title),
@@ -89,17 +117,17 @@ async function readShortcut({ shortcut, ack, context, client }) {
               text: `*${contents.author}*`,
             },
           },
-          {
-            ...(contents.date_published
-              ? {
-                  type: "section",
-                  text: {
-                    type: "mrkdwn",
-                    text: `_${contents.date_published}_`,
-                  },
-                }
-              : {}),
-          },
+          // {
+          //   ...(contents.date_published
+          //     ? {
+          //         type: "section",
+          //         text: {
+          //           type: "mrkdwn",
+          //           text: `_${contents.date_published}_`,
+          //         },
+          //       }
+          //     : null),
+          // },
           {
             type: "context",
             elements: [
@@ -113,7 +141,7 @@ async function readShortcut({ shortcut, ack, context, client }) {
       },
     });
 
-    console.log(result);
+    console.log(updateResult);
   } catch (err) {
     console.error(err);
   }
