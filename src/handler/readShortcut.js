@@ -48,6 +48,13 @@ async function readShortcut({ shortcut, ack, context, client }) {
     const url = getUrlToParse(message.text);
 
     if (!url) {
+      await client.chat.postMessage({
+        token: context.botToken,
+        text: "Sorry, we could not retrieve the URL from your message",
+        icon_emoji: ":crying_cat_face:",
+        thread_ts: shortcut.message_ts,
+        channel: shortcut.channel.id,
+      });
       return;
     }
 
