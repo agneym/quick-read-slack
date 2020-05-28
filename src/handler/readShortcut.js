@@ -33,7 +33,7 @@ function formatTitle(title) {
  */
 async function parseUrl(url) {
   try {
-    const response = await Parser.parse(url, { contentType: "text" });
+    const response = await Parser.parse(url, { contentType: "markdown" });
     return response;
   } catch (err) {
     console.error(error);
@@ -41,145 +41,27 @@ async function parseUrl(url) {
 }
 
 async function readShortcut({ shortcut, ack, context, client }) {
-  /**
-   * Update modal opened with text contents
-   * @param {string} viewId ID of view opened
-   * @param {string} url URL string
-   */
-  async function updateModal(viewId, url) {
-    console.log(url);
-    if (!url) {
-      return;
-    }
-
-    const contents = await parseUrl(url);
-
-    const blocks = (() => {
-      if (contents.failed) {
-        return {
-          title: {
-            type: "plain_text",
-            text: "Loading failed",
-          },
-          close: {
-            type: "plain_text",
-            text: "Close",
-          },
-          blocks: [
-            {
-              type: "section",
-              text: {
-                type: "mrkdwn",
-                text: `We could not load from URL ☹️`,
-                emoji: true,
-              },
-            },
-          ],
-        };
-      }
-      return {
-        title: {
-          type: "plain_text",
-          text: formatTitle(contents.title),
-        },
-        close: {
-          type: "plain_text",
-          text: "Close",
-        },
-        blocks: [
-          {
-            ...(contents.title.length > 25
-              ? {
-                  type: "section",
-                  text: {
-                    type: "plain_text",
-                    text: `*${contents.title}*`,
-                  },
-                }
-              : {}),
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: `*${contents.author}*`,
-            },
-          },
-          // {
-          //   ...(contents.date_published
-          //     ? {
-          //         type: "section",
-          //         text: {
-          //           type: "mrkdwn",
-          //           text: `_${contents.date_published}_`,
-          //         },
-          //       }
-          //     : null),
-          // },
-          {
-            type: "context",
-            elements: [
-              {
-                type: "mrkdwn",
-                text: contents.content,
-              },
-            ],
-          },
-        ],
-      };
-    })();
-
-    return await client.views.update({
-      token: context.botToken,
-      view_id: viewId,
-      view: {
-        type: "modal",
-        callback_id: "quick_read_modal",
-        ...blocks,
-      },
-    });
-  }
-
   try {
     await ack();
 
     const message = shortcut.message;
     const url = getUrlToParse(message.text);
 
-    let loadingText = `Firing up a Browser... 🚀`;
-
     if (!url) {
-      loadingText = `No URL found in message 😟`;
+      return;
     }
 
-    const openResult = await client.views.open({
-      token: context.botToken,
-      trigger_id: shortcut.trigger_id,
-      view: {
-        type: "modal",
-        callback_id: "quick_read_modal",
-        title: {
-          type: "plain_text",
-          text: `Loading ...`,
-        },
-        close: {
-          type: "plain_text",
-          text: "Close",
-        },
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "plain_text",
-              text: loadingText,
-              emoji: true,
-            },
-          },
-        ],
-      },
-    });
+    const contents = await parseUrl(url);
 
-    await updateModal(openResult.view.id, url);
+    await client.files.upload({
+      token: context.botToken,
+      filetype: "post",
+      content: contents.content,
+      title: contents.title,
+      channels: shortcut.channel.id,
+      initial_comment: `Here's the summary you asked for`,
+      thread_ts: shortcut.message_ts,
+    });
   } catch (err) {
     console.error(err);
   }
