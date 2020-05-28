@@ -46,7 +46,8 @@ async function readShortcut({ shortcut, ack, context, client }) {
    * @param {string} viewId ID of view opened
    * @param {string} url URL string
    */
-  async function updateModal({ viewId, token, url }) {
+  async function updateModal(viewId, url) {
+    console.log(url);
     if (!url) {
       return;
     }
@@ -104,17 +105,17 @@ async function readShortcut({ shortcut, ack, context, client }) {
               text: `*${contents.author}*`,
             },
           },
-          {
-            ...(contents.date_published
-              ? {
-                  type: "section",
-                  text: {
-                    type: "mrkdwn",
-                    text: `_${contents.date_published}_`,
-                  },
-                }
-              : null),
-          },
+          // {
+          //   ...(contents.date_published
+          //     ? {
+          //         type: "section",
+          //         text: {
+          //           type: "mrkdwn",
+          //           text: `_${contents.date_published}_`,
+          //         },
+          //       }
+          //     : null),
+          // },
           {
             type: "context",
             elements: [
@@ -128,7 +129,7 @@ async function readShortcut({ shortcut, ack, context, client }) {
       };
     })();
 
-    await client.views.update({
+    return await client.views.update({
       token: context.botToken,
       view_id: viewId,
       view: {
@@ -178,7 +179,7 @@ async function readShortcut({ shortcut, ack, context, client }) {
       },
     });
 
-    updateModal(openResult.view.id, url);
+    await updateModal(openResult.view.id, url);
   } catch (err) {
     console.error(err);
   }
