@@ -1,13 +1,16 @@
 <div align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <header>
     <img src="assets/icon.png" height="80" alt="Icon for Quick Read">
     <h1>Quick Read</h1>
     <p>Ad free light version of article inside Slack</p>
   </header>
 </div>
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Contributing
 
@@ -32,6 +35,7 @@ Raise an [issue](https://github.com/agneym/quick-read-slack) for bugs/queries.
 ## Contributors
 
 This project follows [all contributors](https://allcontributors.org/) specification. All contributions are welcome.
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -43,4 +47,5 @@ This project follows [all contributors](https://allcontributors.org/) specificat
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
