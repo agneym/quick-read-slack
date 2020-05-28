@@ -40,81 +40,105 @@ async function parseUrl(url) {
   }
 }
 
-/**
- * Update modal opened with text contents
- * @param {string} viewId ID of view opened
- * @param {string} url URL string
- */
-async function updateModal(viewId, url) {
-  if (!url) {
-    return;
-  }
+async function readShortcut({ shortcut, ack, context, client }) {
+  /**
+   * Update modal opened with text contents
+   * @param {string} viewId ID of view opened
+   * @param {string} url URL string
+   */
+  async function updateModal({ viewId, token, url }) {
+    if (!url) {
+      return;
+    }
 
-  const contents = await parseUrl(url);
+    const contents = await parseUrl(url);
 
-  if (contents.failed) {
-    return;
-  }
-
-  await client.views.update({
-    token: context.botToken,
-    view_id: viewId,
-    view: {
-      type: "modal",
-      callback_id: "quick_read_modal",
-      title: {
-        type: "plain_text",
-        text: formatTitle(contents.title),
-      },
-      close: {
-        type: "plain_text",
-        text: "Close",
-      },
-      blocks: [
-        {
-          ...(contents.title.length > 25
-            ? {
-                type: "section",
-                text: {
-                  type: "plain_text",
-                  text: `*${contents.title}*`,
-                },
-              }
-            : {}),
-        },
-        {
-          type: "section",
-          text: {
-            type: "mrkdwn",
-            text: `*${contents.author}*`,
+    const blocks = (() => {
+      if (contents.failed) {
+        return {
+          title: {
+            type: "plain_text",
+            text: "Loading failed",
           },
-        },
-        {
-          ...(contents.date_published
-            ? {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: `_${contents.date_published}_`,
-                },
-              }
-            : null),
-        },
-        {
-          type: "context",
-          elements: [
+          close: {
+            type: "plain_text",
+            text: "Close",
+          },
+          blocks: [
             {
-              type: "mrkdwn",
-              text: contents.content,
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: `We could not load from URL ☹️`,
+                emoji: true,
+              },
             },
           ],
+        };
+      }
+      return {
+        title: {
+          type: "plain_text",
+          text: formatTitle(contents.title),
         },
-      ],
-    },
-  });
-}
+        close: {
+          type: "plain_text",
+          text: "Close",
+        },
+        blocks: [
+          {
+            ...(contents.title.length > 25
+              ? {
+                  type: "section",
+                  text: {
+                    type: "plain_text",
+                    text: `*${contents.title}*`,
+                  },
+                }
+              : {}),
+          },
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: `*${contents.author}*`,
+            },
+          },
+          {
+            ...(contents.date_published
+              ? {
+                  type: "section",
+                  text: {
+                    type: "mrkdwn",
+                    text: `_${contents.date_published}_`,
+                  },
+                }
+              : null),
+          },
+          {
+            type: "context",
+            elements: [
+              {
+                type: "mrkdwn",
+                text: contents.content,
+              },
+            ],
+          },
+        ],
+      };
+    })();
 
-async function readShortcut({ shortcut, ack, context, client }) {
+    await client.views.update({
+      token: context.botToken,
+      view_id: viewId,
+      view: {
+        type: "modal",
+        callback_id: "quick_read_modal",
+        ...blocks,
+      },
+    });
+  }
+
   try {
     await ack();
 
