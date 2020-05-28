@@ -21,7 +21,8 @@
   "dependencies": {
     "@postlight/mercury-parser": "^2.2.0",
     "@slack/bolt": "^2.1.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "get-urls": "^9.2.0"
   },
   "husky": {
     "hooks": {
