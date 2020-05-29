@@ -25,7 +25,7 @@ Package management with [npm](https://www.npmjs.com/)
 
 ```
 npm install
-npm start
+npm run dev
 ```
 
 If you like to test out on your Slack workspace, follow steps outlined on [Bolt Getting Started page](https://slack.dev/bolt-js/tutorial/getting-started) in context of this workspace.
