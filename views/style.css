@@ -51,8 +51,18 @@ h6 {
   font-weight: 600;
   font-style: italic;
   font-size: 6.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
   margin-top: 1rem;
+}
+
+.initial {
+  opacity: 0;
+  will-change: transform;
+  transform-origin: left center;
+}
+
+.cta-btn {
+  display: block;
 }
 
 .logo {
@@ -154,4 +164,13 @@ section.image {
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
   animation: textGradientAnimation 8s ease infinite;
+}
+
+.dot {
+  pointer-events: none;
+  position: fixed;
+  border-radius: 50%;
+  z-index: -1;
+  transform: translateX(0);
+  opacity: 0.7;
 }

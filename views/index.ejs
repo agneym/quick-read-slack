@@ -15,14 +15,16 @@
     <main class="page-container">
       <section class="text">
         <div>
-          <img src="assets/icon.png" alt="" width="50" class="logo">
+          <img src="assets/icon.png" alt="" width="50" class="logo initial">
           <div class="text-container">
-            <h1 class="main-heading">Quick Read for Slack</h1>
-            <p class="subtitle">Read Ad-free articles inside your Slack.</p>
+            <h1 class="main-heading initial">Quick Read for Slack</h1>
+            <p class="subtitle initial">Read Ad-free articles inside your Slack.</p>
           </div>
           <a
             href=<%="https://slack.com/oauth/v2/authorize?client_id=73427254193.1154987875281&scope=commands,files:write,chat:write&state="+stateToken%>
-            ><img
+            class="cta-btn initial"  
+          >
+          <img
               alt="Add to Slack"
               height="40"
               width="139"
