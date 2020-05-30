@@ -8,6 +8,11 @@ body {
   margin: 0;
   font-size: 1.6rem;
   font-family: var(--display-font);
+  background-image: url(assets/header-bg.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: #000000;
+  background-blend-mode: overlay;
 }
 
 h1,
@@ -17,4 +22,9 @@ h4,
 h5,
 h6 {
   font-family: var(--heading-font);
+}
+
+.page-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
