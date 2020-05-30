@@ -13,6 +13,8 @@ body {
   background-size: 100%;
   background-color: #000000;
   background-blend-mode: overlay;
+  color: #ffffff;
+  min-height: 100vh;
 }
 
 h1,
@@ -25,6 +27,20 @@ h6 {
 }
 
 .page-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  height: 100%;
+}
+
+.page-container section.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 0 1 50%;
+}
+
+.main-heading {
+  font-weight: 600;
+  font-style: italic;
+  font-size: 6.5rem;
 }
