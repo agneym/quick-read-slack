@@ -118,8 +118,40 @@ section.image {
 .icons .icon-link {
   padding: 0 0.5rem;
   transition: transform 0.2s ease;
+  text-decoration: none;
 }
 
 .icons .icon-link:hover {
   transform: scale(1.1);
+}
+
+@keyframes textGradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.main-website {
+  text-decoration: none;
+}
+
+.main-website > p {
+  font-size: 2.5rem;
+  margin: 0;
+  font-weight: bolder;
+  background-image: linear-gradient(45deg, #05eeb2, #0552ee);
+  background-size: 100%;
+  background-size: 400% 400%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  animation: textGradientAnimation 8s ease infinite;
 }
