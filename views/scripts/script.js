@@ -38,10 +38,21 @@ function initialAnimation() {
     duration: 1000,
   });
   tl.add({
+    targets: ".background",
+    height: "140%",
+    delay: 400,
+    duration: 800,
+    easing: "easeInOutCirc",
+  });
+  tl.add({
     targets: ".initial",
     translateY: -20,
     translateX: 20,
     delay: anime.stagger(600),
+    opacity: 1,
+  });
+  tl.add({
+    targets: ".image",
     opacity: 1,
   });
   tl.add({

@@ -16,12 +16,10 @@ body {
   margin: 0;
   font-size: 1.6rem;
   font-family: var(--display-font);
-  background-image: url(assets/header-bg.svg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-color: var(--main-background-color);
   color: var(--primary-text-color);
   min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 h1,
@@ -31,6 +29,21 @@ h4,
 h5,
 h6 {
   font-family: var(--heading-font);
+}
+
+.background {
+  background-image: url(assets/header-bg.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: var(--main-background-color);
+  position: fixed;
+  height: 10rem;
+  top: 50%;
+  left: 0;
+  transform: translateX(-10%) translateY(-50%) rotate(-10deg);
+  width: 120%;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .page-container {
@@ -86,6 +99,7 @@ section.image {
   height: 100vh;
   display: flex;
   align-items: center;
+  opacity: 0;
 }
 
 .frame {
