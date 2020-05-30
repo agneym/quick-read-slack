@@ -5,6 +5,11 @@
   --main-background-color: #000000;
   --secondary-text-color: aliceblue;
   --primary-text-color: #ffffff;
+  --footer-height: 5rem;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -30,6 +35,7 @@ h6 {
 
 .page-container {
   display: flex;
+  height: calc(100vh - var(--footer-height));
 }
 
 .page-container section.text {
@@ -38,7 +44,7 @@ h6 {
   justify-content: center;
   flex-direction: column;
   flex: 0 1 50%;
-  height: 80vh;
+  height: 100%;
 }
 
 .main-heading {
@@ -86,4 +92,34 @@ section.image {
 
 .frame:hover {
   transform: perspective(0) rotateY(0);
+}
+
+.footer {
+  height: var(--footer-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem 1rem;
+}
+
+.footer .icons {
+  display: flex;
+  align-items: center;
+}
+
+.footer .icons > * {
+  margin: 0 1.5rem;
+}
+
+.icons .icon-img {
+  width: 2rem;
+}
+
+.icons .icon-link {
+  padding: 0 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.icons .icon-link:hover {
+  transform: scale(1.1);
 }
