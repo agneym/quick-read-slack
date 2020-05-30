@@ -1,0 +1,20 @@
+:root {
+  font-size: 10px;
+  --display-font: "Lato", sans-serif;
+  --heading-font: "Playfair Display", serif;
+}
+
+body {
+  margin: 0;
+  font-size: 1.6rem;
+  font-family: var(--display-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+}

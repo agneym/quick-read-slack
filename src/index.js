@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const express = require("express");
 const { App } = require("@slack/bolt");
 
 const createDatabase = require("./database");
@@ -24,6 +25,9 @@ const app = new App({
 });
 
 createHandlers(app);
+
+const expressApp = app.receiver.app;
+expressApp.use(express.static("public"));
 
 (async () => {
   await app.start(process.env.PORT || 3000);
