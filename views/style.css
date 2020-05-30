@@ -2,6 +2,9 @@
   font-size: 10px;
   --display-font: "Lato", sans-serif;
   --heading-font: "Playfair Display", serif;
+  --main-background-color: #000000;
+  --secondary-text-color: aliceblue;
+  --primary-text-color: #ffffff;
 }
 
 body {
@@ -11,9 +14,8 @@ body {
   background-image: url(assets/header-bg.svg);
   background-repeat: no-repeat;
   background-size: 100%;
-  background-color: #000000;
-  background-blend-mode: overlay;
-  color: #ffffff;
+  background-color: var(--main-background-color);
+  color: var(--primary-text-color);
   min-height: 100vh;
 }
 
@@ -28,7 +30,6 @@ h6 {
 
 .page-container {
   display: flex;
-  min-height: 80vh;
 }
 
 .page-container section.text {
@@ -37,6 +38,7 @@ h6 {
   justify-content: center;
   flex-direction: column;
   flex: 0 1 50%;
+  height: 80vh;
 }
 
 .main-heading {
@@ -44,10 +46,15 @@ h6 {
   font-style: italic;
   font-size: 6.5rem;
   margin-bottom: 4rem;
+  margin-top: 1rem;
+}
+
+.logo {
+  padding-left: 0.2rem;
 }
 
 .subtitle {
-  color: #8c92ac;
+  color: var(--secondary-text-color);
   line-height: 1.2;
   letter-spacing: 0.1rem;
   font-size: 1.7rem;
@@ -66,11 +73,17 @@ section.image {
 }
 
 .frame {
-  height: 60%;
+  height: 40%;
   width: 80%;
   transform: perspective(100rem) rotateY(20deg);
   box-shadow: -6px 6px 2px -3px rgba(255, 255, 255, 0.1);
   background-image: url(assets/ss.png);
   background-size: contain;
   background-repeat: no-repeat;
+  transition: transform 0.8s ease;
+  cursor: crosshair;
+}
+
+.frame:hover {
+  transform: perspective(0) rotateY(0);
 }
