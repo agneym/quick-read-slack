@@ -57,3 +57,20 @@ h6 {
 .text-container {
   margin-bottom: 4rem;
 }
+
+section.image {
+  flex: 0 1 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.frame {
+  height: 60%;
+  width: 80%;
+  transform: perspective(100rem) rotateY(20deg);
+  box-shadow: -6px 6px 2px -3px rgba(255, 255, 255, 0.1);
+  background-image: url(assets/ss.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
