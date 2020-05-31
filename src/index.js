@@ -22,9 +22,8 @@ const app = new App({
       console.log("asked to store information");
       return db.set(installation.team.id, installation);
     },
-    fetchInstallation: (InstallQuery) => {
-      console.log("asked to fetch information");
-      return db.get(InstallQuery.teamId);
+    fetchInstallation: async (InstallQuery) => {
+      return await db.get(InstallQuery.teamId);
     },
   },
 });

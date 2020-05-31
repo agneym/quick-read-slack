@@ -53,7 +53,7 @@ function initialAnimation() {
   });
   tl.add({
     targets: ".image",
-    duration: 400,
+    duration: 600,
     opacity: 1,
   });
   tl.add({
