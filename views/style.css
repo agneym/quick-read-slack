@@ -140,6 +140,7 @@ section.image {
   padding: 0 0.5rem;
   transition: transform 0.2s ease;
   text-decoration: none;
+  color: #a0aec0;
 }
 
 .icons .icon-link:hover {
