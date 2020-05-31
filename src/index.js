@@ -19,7 +19,6 @@ const app = new App({
   scopes,
   installationStore: {
     storeInstallation: (installation) => {
-      console.log("asked to store information");
       return db.set(installation.team.id, installation);
     },
     fetchInstallation: async (InstallQuery) => {

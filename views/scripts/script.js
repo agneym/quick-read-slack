@@ -39,9 +39,20 @@ function initialAnimation() {
   });
   tl.add({
     targets: ".background",
-    height: "140%",
+    height: "100%",
+    translateY: "-50%",
+    translateX: "-10%",
+    rotate: "-10deg",
     delay: 400,
     duration: 800,
+    easing: "easeInOutCirc",
+  });
+  tl.add({
+    targets: ".background",
+    rotate: 0,
+    translateY: "-50%",
+    translateX: "-10%",
+    duration: 400,
     easing: "easeInOutCirc",
   });
   tl.add({
