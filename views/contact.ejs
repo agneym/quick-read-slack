@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head', { title: `Contact - Quick Read for Slack` }) %>
+    <style>
+      :root {
+        font-size: 10px;
+        --display-font: "Lato", sans-serif;
+        --heading-font: "Playfair Display", serif;
+        --main-background-color: #fbe9e7;
+        --secondary-text-color: aliceblue;
+        --primary-text-color: #263238;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-size: 1.6rem;
+        font-family: var(--display-font);
+        color: var(--primary-text-color);
+        background-color: var(--main-background-color);
+        min-height: 100vh;
+        position: relative;
+        line-height: 1.45;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--heading-font);
+      }
+
+      a {
+        line-break: strict;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      #root {
+        width: 80%;
+        max-width: 800px;
+        margin: 5rem auto;
+      }
+
+      .document-page-content {
+        background-color: #ffffff;
+        padding: 4rem 5rem;
+      }
+
+      .document-page-logo {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        width: 5rem;
+      }
+
+      .document-page-back {
+        margin-bottom: 1rem;
+        color: var(--primary-text-color);
+      }
+
+      .footer {
+        height: var(--footer-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4rem 1rem;
+      }
+
+      .footer .icons {
+        display: flex;
+        align-items: center;
+      }
+
+      .footer .icons > * {
+        margin: 0 1.5rem;
+      }
+
+      .icons .icon-img {
+        width: 2rem;
+      }
+
+      .icons .icon-link {
+        padding: 0 0.5rem;
+        transition: transform 0.2s ease;
+        text-decoration: none;
+      }
+
+      .icons .icon-link:hover {
+        transform: scale(1.1);
+      }
+
+      .form-field {
+        margin: 2rem 0;
+      }
+
+      .form-field:first-child {
+        margin-top: 0;
+      }
+
+      label {
+        font-size: 1.4rem;
+        margin-bottom: 0.4rem;
+        display: block;
+      }
+
+      input,
+      textarea {
+        font-family: var(--display-font);
+        box-shadow: inset 0 0.0625rem 0.125em rgba(10, 10, 10, 0.05);
+        max-width: 100%;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 4px;
+        color: #363636;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        align-items: center;
+        border: 1px solid #dbdbdb;
+        display: inline-flex;
+        justify-content: flex-start;
+        line-height: 1.5;
+        position: relative;
+        vertical-align: top;
+        padding: 1rem 1.2rem;
+        cursor: pointer;
+      }
+
+      input:hover,
+      textarea:hover {
+        border-color: #b5b5b5;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #3273dc;
+        box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+      }
+
+      .btn {
+        background-color: #ee0979;
+        padding: 1rem 2rem;
+        box-shadow: none;
+        border-color: transparent;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      .btn:focus {
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+      }
+
+      @keyframes textGradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .main-website {
+        text-decoration: none;
+      }
+
+      .main-website > p {
+        font-size: 2.5rem;
+        margin: 0;
+        font-weight: bolder;
+        background-image: linear-gradient(45deg, #ee0979, #ff6e00);
+        background-size: 100%;
+        background-size: 400% 400%;
+        background-repeat: repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+        animation: textGradientAnimation 8s ease infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="document-page">
+        <div class="document-page-back">
+          <a href="/">← Back to Quick Read</a>
+        </div>
+        <div class="document-page-content">
+          <a class="document-page-logo" href="/"
+            ><img alt="Quick Read Logo" src="assets/icon.png"
+          /></a>
+          <h1>Contact Us</h1>
+          <form action="https://formspree.io/mlepbebp" method="POST">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="John Doe"
+                autocomplete="name"
+              />
+            </div>
+            <div class="form-field">
+              <label for="name">Email</label>
+              <input
+                type="email"
+                name="_replyto"
+                placeholder="john.doe@example.com"
+                autocomplete="email"
+              />
+            </div>
+            <div class="form-field">
+              <label for="name">Message</label>
+              <textarea name="name" rows="3" placeholder="Message"></textarea>
+            </div>
+            <div class="action">
+              <button class="btn">Submit</button>
+            </div>
+          </form>
+          <ul>
+            <li>
+              By email:
+              <a href="mailto:agney@outlook.in">agney@outlook.in</a>
+            </li>
+          </ul>
+        </div>
+        <p class="document-page-contact">
+          Any issues? Contact us at
+          <a href="mailto:agney@outlook.in">agney@outlook.in</a>
+        </p>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
+  </body>
+</html>

@@ -46,6 +46,10 @@ expressApp.get("/privacy", (req, res) => {
   res.render("privacy-policy");
 });
 
+expressApp.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
 (async () => {
   await app.start(process.env.PORT || 3000);
   console.log("⚡️ Bolt app is running!");
