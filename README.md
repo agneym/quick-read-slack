@@ -6,6 +6,8 @@
   </header>
 </div>
 
+![Demo of Quick Read](views/assets/vid.gif)
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
@@ -20,6 +22,7 @@ Libraries:
 
 - [Slack Bolt](https://slack.dev/bolt-js/concepts) framework
 - [Postlight Mercury Parser](https://github.com/postlight/mercury-parser)
+- [FaunaDB](https://fauna.com/)
 
 Package management with [npm](https://www.npmjs.com/)
 
