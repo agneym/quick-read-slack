@@ -6,7 +6,7 @@
   </header>
 </div>
 
-![Demo of Quick Read](views/assets/vid.gif)
+<img src="views/assets/vid.gif" width="100%" />
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
