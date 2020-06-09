@@ -28,7 +28,7 @@ async function parseUrl(url) {
   }
 }
 
-async function readShortcut({ shortcut, ack, context, client }) {
+async function readShortcut({ shortcut, ack, context, client, respond }) {
   try {
     await ack();
 
@@ -60,17 +60,9 @@ async function readShortcut({ shortcut, ack, context, client }) {
   } catch (err) {
     const code = err.data.error;
     if (code === "not_in_channel") {
-      const {
-        message: { user },
-      } = shortcut;
-      await client.chat.postMessage({
-        token: context.botToken,
-        text:
-          "It seems like Quick Read is not part the channel you were trying. This is required for us to post a message to the channel. For instructions: https://slack.com/intl/en-in/help/articles/202035138-Add-an-app-to-your-workspace",
-        icon_emoji: ":crying_cat_face:",
-        channel: user,
-        as_user: true,
-      });
+      await respond(
+        `It seems like Quick Read is not part the channel you were trying. This is required for us to post a message to the channel. For instructions: https://slack.com/intl/en-in/help/articles/202035138-Add-an-app-to-your-workspace`
+      );
       return;
     }
     console.error(err);
