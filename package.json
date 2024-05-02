@@ -22,7 +22,7 @@
     "@postlight/mercury-parser": "^2.2.0",
     "@slack/bolt": "^3.17.0",
     "dotenv": "^8.2.0",
-    "ejs": "^3.1.7",
+    "ejs": "^3.1.10",
     "faunadb": "^2.14.1",
     "get-urls": "^9.2.0",
     "jsonwebtoken": "^9.0.0"
